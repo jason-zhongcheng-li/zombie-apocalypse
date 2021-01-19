@@ -1,0 +1,31 @@
+{
+  "name": "zombie-apocalypse",
+  "version": "1.0.0",
+  "description": "Ailo Interview – Programming Exercise",
+  "private": true,
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.17.44",
+    "app-root-path": "^2.2.1",
+    "mocha": "^6.2.3",
+    "tslint": "^5.20.1",
+    "typescript": "^3.9.7"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "clean": "rm -Rf dist",
+    "compile": "node_modules/.bin/tsc -p .",
+    "lint": "node_modules/.bin/tslint -p .",
+    "test": "npm run test:prep && npm run test:unit",
+    "test:prep": "npm run lint && npm run clean && npm run compile",
+    "test:unit": "node_modules/.bin/mocha test",
+    "pr": "git pull && npm test && npm --no-git-tag-version version prerelease",
+    "patch": "git pull && npm test && npm version patch && git push --follow-tags",
+    "minor": "git pull && npm test && npm version minor && git push --follow-tags",
+    "major": "git pull && npm test && npm version major && git push --follow-tags"
+  },
+  "author": "Jason Li",
+  "license": "Apache-2.0"
+}
